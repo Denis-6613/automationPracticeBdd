@@ -1,0 +1,5 @@
+2019-10-27 15:24:14 INFO  DriverFactory - main : 50 - Driver type set to chrome
+2019-10-27 15:24:17 INFO  HomePage - main : 30 - Clicked on Sign In link
+2019-10-27 15:24:17 INFO  LoginPage - main : 28 - Entered email as abc213@mailinator.com
+2019-10-27 15:24:18 INFO  LoginPage - main : 33 - Entered password as abc1234
+2019-10-27 15:24:18 INFO  LoginPage - main : 38 - Clicked on Sign In button
