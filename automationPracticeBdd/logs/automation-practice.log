@@ -1,5 +1,11 @@
-2019-10-27 15:24:14 INFO  DriverFactory - main : 50 - Driver type set to chrome
-2019-10-27 15:24:17 INFO  HomePage - main : 30 - Clicked on Sign In link
-2019-10-27 15:24:17 INFO  LoginPage - main : 28 - Entered email as abc213@mailinator.com
-2019-10-27 15:24:18 INFO  LoginPage - main : 33 - Entered password as abc1234
-2019-10-27 15:24:18 INFO  LoginPage - main : 38 - Clicked on Sign In button
+2019-11-03 12:15:16 INFO  DriverFactory - main : 50 - Driver type set to chrome
+2019-11-03 12:15:19 INFO  HomePage - main : 36 - Clicked on Contact us link
+2019-11-03 12:15:20 INFO  TestDataGenerator - main : 17 - Random first name generated: Trent
+2019-11-03 12:15:20 INFO  TestDataGenerator - main : 23 - Random last name generated: Satterfield
+2019-11-03 12:15:22 INFO  Common - main : 24 - sleep for 2 seconds
+2019-11-03 12:15:22 INFO  ContactUsPage - main : 81 - Clicked on Send > button
+2019-11-03 12:15:28 INFO  DriverFactory - main : 50 - Driver type set to chrome
+2019-11-03 12:15:32 INFO  HomePage - main : 31 - Clicked on Sign In link
+2019-11-03 12:15:32 INFO  LoginPage - main : 28 - Entered email as abc213@mailinator.com
+2019-11-03 12:15:32 INFO  LoginPage - main : 33 - Entered password as abc1234
+2019-11-03 12:15:33 INFO  LoginPage - main : 38 - Clicked on Sign In button

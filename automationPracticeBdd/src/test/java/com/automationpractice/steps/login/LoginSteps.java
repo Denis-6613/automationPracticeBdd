@@ -29,16 +29,11 @@ public class LoginSteps extends CommonStep {
 	
 	@Given("^User navigates to home page$")
 	public void userNavigatesToHomePage() {
-		String s=TestDataGenerator.getRandomText(800);
-		System.out.println(s);
-		System.out.println(s.length());
+//		String s=TestDataGenerator.getRandomText(800);
+//		System.out.println(s);
+//		System.out.println(s.length());
 	}
 	
-	@When("User clicks on sigh in link")
-	public void user_clicks_on_sigh_in_link() {
-		homePage.clickSignInLink();
-//		Common.sleep(2);
-	}
 
 	@When("User input email address and password")
 	public void user_input_email_address_and_password() {

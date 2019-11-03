@@ -1,4 +1,4 @@
-package com.automationpractice.steps.login;
+package com.automationpractice.steps;
 
 import java.util.concurrent.TimeUnit;
 
@@ -11,9 +11,9 @@ import com.automationpractice.utilities.CommonStep;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
 
-public class Hook extends CommonStep{
+public class Hooks extends CommonStep{
 	
-	private static final Logger logger = Logger.getLogger(Hook.class);
+	private static final Logger logger = Logger.getLogger(Hooks.class);
 	private WebDriver driver = getDriver();
 	
 	@Before
