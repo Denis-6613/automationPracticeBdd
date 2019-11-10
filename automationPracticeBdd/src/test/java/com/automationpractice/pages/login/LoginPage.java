@@ -25,17 +25,24 @@ public class LoginPage extends CommonPage{
 	
 	public void enterEmail(String email) {
 		driverHelper.sendKeys(emailTextBox, email, timeOutInSeconds);
-		logger.info("Entered email as "+email);
+		logger.info("Entered email: "+email);
 	}
 	
 	public void enterPassword(String password) {
 		driverHelper.sendKeys(passwordTextBox, password, timeOutInSeconds);
-		logger.info("Entered password as "+password);
+		logger.info("Entered password: "+password);
 	}
 	
 	public void clickSignInButton() {
 		driverHelper.click(signInButton, timeOutInSeconds);
 		logger.info("Clicked on Sign In button");
+	}
+	
+	public String getErrorMessage () {
+		String message =driverHelper.getText(By.cssSelector(".alert-danger"), timeOutInSeconds);
+		logger.info("Error message = "+message);
+		return message;
+		
 	}
 	
 

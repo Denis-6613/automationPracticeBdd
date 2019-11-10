@@ -8,14 +8,20 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import com.automationpractice.pages.home.HomePage;
+import com.automationpractice.utilities.Common;
 import com.automationpractice.utilities.CommonPage;
 import com.automationpractice.utilities.DriverHelper;
 import com.automationpractice.utilities.TestDataGenerator;
 
+/**
+ * @author Denis
+ * Nov 3, 2019
+ */
 public class ContactUsPage extends CommonPage{
 	
 	private static final int timeOutInSeconds = 15;
 	private static final Logger logger = Logger.getLogger(ContactUsPage.class);
+	
 	private DriverHelper driverHelper = getDriverHelper();
 	private By subjectHeadingDropDown=By.id("id_contact");
 	private By emailInput=By.id("email");
@@ -24,37 +30,49 @@ public class ContactUsPage extends CommonPage{
 	private By messageTextBox=By.id("message");
 	private By sendButton=By.id("submitMessage");
 	
-	private final String firstName=TestDataGenerator.getRandomFirstName();
-	private final String lastName=TestDataGenerator.getRandomLastName();
-	private final String email=TestDataGenerator.getRandomEmail(firstName, lastName);
-	
-	String orderRef="123456789";
-	
-	String filePath="C:\\Users\\Denis\\Desktop\\test.txt";
-	String message = TestDataGenerator.getRandomText(80);
-	
+//	private WebDriver driver;//no need as executeJS work with driverHelper
 
 	public ContactUsPage(WebDriver driver) {
 		super(driver);
-		// TODO Auto-generated constructor stub
+//		this.driver=driver;//cool trick! not required 
 	}
 	
-	public void selectSubjectHeading(int index) {
-//		WebDriver driver=;
+	/*
+	 public void selectSubjectHeading(String subject) {
+		// using WebDriver driver eliminates the need for implicit wait
+		Select select = new Select(driver.findElement(subjectHeadingDropDown));
+		select.selectByVisibleText(subject);
+		
+		logger.info("Selected subject heading: "+subject);
+	}*/
+	
+	/*
+	public void selectSubjectHeading_JS(String subject) {
+		
+		JavascriptExecutor js = (JavascriptExecutor) driver;
+	    js.executeScript("arguments[0].setAttribute('class', '')", driverHelper.getElement(By.id("uniform-id_contact"), timeOutInSeconds));
+	    Select select = new Select(driverHelper.getElement(subjectHeadingDropDown, timeOutInSeconds));
+	//    select.selectByIndex(2); - ok
+	    select.selectByValue("1");//1 - Webmaster - ok
+	//    select.selectByVisibleText(subject); - ok
+	//    Common.sleep(2);
+	    logger.info("JS_Selected subject heading: "+subject);
+	}*/
+	
+	public void selectSubjectHeading_JS_2(String subject) {
+		
 //		JavascriptExecutor js = (JavascriptExecutor) driver;
-//        js.executeScript("arguments[0].setAttribute('class', '')", driverHelper.getElement(By.id("uniform-id_contact"), timeOutInSeconds));
-        //cannot click on drop-down
-        
-		/*driverHelper.clickById("id_contact", 15);
-		System.out.println("click");
-		WebElement dropdown = driverHelper.getElement(subjectHeadingDropDown, timeOutInSeconds);
-		System.out.println("element");
-		Select select = new Select(dropdown);
-		System.out.println("Select");
-		select.selectByIndex(index);
-		logger.info("Selected subject heading, option - "+index);
-		*/
-	}
+//	    js.executeScript("arguments[0].setAttribute('class', '')", driverHelper.getElement(By.id("uniform-id_contact"), timeOutInSeconds));
+	    
+	    driverHelper.executeJS("arguments[0].setAttribute('class', '')", driverHelper.getElement(By.id("uniform-id_contact"), timeOutInSeconds));
+	    
+	    Select select = new Select(driverHelper.getElement(subjectHeadingDropDown, timeOutInSeconds));
+//	    select.selectByIndex(2); - ok
+	    select.selectByValue("1");//1 - Webmaster - ok
+//	    select.selectByVisibleText(subject); - ok
+//	    Common.sleep(2);
+	    logger.info("JS_Selected subject heading: "+subject);
+		}
 	
 	public void enterEmailAddress(String email) {
 		driverHelper.sendKeys(emailInput, email, timeOutInSeconds);
@@ -67,7 +85,14 @@ public class ContactUsPage extends CommonPage{
 	}
 	
 	public void enterAttachedFile(String filePath) {
-		driverHelper.sendKeys(attachFileTextBox, filePath, timeOutInSeconds);
+//		option1
+//		driver.findElement(attachFileTextBox).sendKeys(filePath); //why it's not working with driverHelper again?! - works
+		
+//		option2 - also working! 
+//		So, it's the theme of the website - cover active element with dummy div with corresponding class - solution is below
+		driverHelper.executeJS("arguments[0].setAttribute('class', '')", driverHelper.getElement(By.id("uniform-fileUpload"), timeOutInSeconds));
+		driverHelper.sendKeys(attachFileTextBox, filePath, timeOutInSeconds); //- not working, not visible again!
+		
 		logger.info("File attached - "+filePath);
 	}
 	
@@ -81,6 +106,12 @@ public class ContactUsPage extends CommonPage{
 		logger.info("Clicked on Send > button");
 	}
 	
+	public String getMessageAfterSend() {
+		String message = driverHelper.getText(By.cssSelector(".alert"), timeOutInSeconds);
+		System.out.println("Message after Send It = "+message);
+		logger.info("Message after Send It = "+message);
+		return message;
+	}
 	
 
 }

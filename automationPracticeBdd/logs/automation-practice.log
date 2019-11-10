@@ -1,11 +1,11 @@
-2019-11-03 12:15:16 INFO  DriverFactory - main : 50 - Driver type set to chrome
-2019-11-03 12:15:19 INFO  HomePage - main : 36 - Clicked on Contact us link
-2019-11-03 12:15:20 INFO  TestDataGenerator - main : 17 - Random first name generated: Trent
-2019-11-03 12:15:20 INFO  TestDataGenerator - main : 23 - Random last name generated: Satterfield
-2019-11-03 12:15:22 INFO  Common - main : 24 - sleep for 2 seconds
-2019-11-03 12:15:22 INFO  ContactUsPage - main : 81 - Clicked on Send > button
-2019-11-03 12:15:28 INFO  DriverFactory - main : 50 - Driver type set to chrome
-2019-11-03 12:15:32 INFO  HomePage - main : 31 - Clicked on Sign In link
-2019-11-03 12:15:32 INFO  LoginPage - main : 28 - Entered email as abc213@mailinator.com
-2019-11-03 12:15:32 INFO  LoginPage - main : 33 - Entered password as abc1234
-2019-11-03 12:15:33 INFO  LoginPage - main : 38 - Clicked on Sign In button
+2019-11-03 22:30:14 INFO  DriverFactory - main : 50 - Driver type set to chrome
+2019-11-03 22:30:19 INFO  HomePage - main : 31 - Clicked on Sign In link
+2019-11-03 22:30:19 INFO  LoginPage - main : 28 - Entered email: abc213@mailinator.com
+2019-11-03 22:30:20 INFO  LoginPage - main : 33 - Entered password: abc1234
+2019-11-03 22:30:21 INFO  LoginPage - main : 38 - Clicked on Sign In button
+2019-11-03 22:30:26 INFO  DriverFactory - main : 50 - Driver type set to chrome
+2019-11-03 22:30:31 INFO  HomePage - main : 31 - Clicked on Sign In link
+2019-11-03 22:30:32 INFO  LoginPage - main : 28 - Entered email: invalid
+2019-11-03 22:30:32 INFO  LoginPage - main : 33 - Entered password: invalid
+2019-11-03 22:30:33 INFO  LoginPage - main : 38 - Clicked on Sign In button
+2019-11-03 22:30:34 INFO  LoginPage - main : 43 - Error message = There is 1 error Invalid email address.

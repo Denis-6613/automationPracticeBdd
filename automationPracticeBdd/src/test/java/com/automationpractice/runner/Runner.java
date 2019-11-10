@@ -9,16 +9,17 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		plugin = {
 			"html:target/cucumber_report",
-			"json:target/cucumber_report/cucumber.json"
-				
+			"json:target/cucumber_report/cucumber.json",
+			"rerun:target/failed_scenarios/rerun.txt"
 		},
 //		features = {"src/test/resources/features/login.feature","/src/test/resources/features/contact_us.feature"},
 		features = {"src/test/resources/features"},
 		glue= {"com.automationpractice.steps"},
-//		tags= {
-//				"@smokeTest", "~@contactUs"//tilde to skip
-//				},
-		tags= {	"@smokeTest"},
+//		tags= {"@smokeTest", "~@contactUs"},//tilde to skip
+//		tags= {	"@smokeTest"},
+//		tags= {	"@contactUs"},
+//		tags= {	"@contactUs"},
+		tags= {	"@negative"},
 		monochrome=true
 //				,dryRun = true
 		/*

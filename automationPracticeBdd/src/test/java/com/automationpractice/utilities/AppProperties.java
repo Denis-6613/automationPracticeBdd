@@ -13,11 +13,11 @@ public class AppProperties {
 	private static Properties properties=getProperties();
 	private final static Logger logger = Logger.getLogger(AppProperties.class);
 	
-//	public static final String TEST_LEAF_BASE_URL=properties.getProperty("test_leaf_base_url");
 	public static final String AUTOMATION_PRACTICE_BASE_URL=properties.getProperty("automation_practice_base_url");
-//	public static final String THE_INTERNET_BASE_URL=properties.getProperty("the_internet_base_url");
 	
 	public static final String BROWSER_TYPE=properties.getProperty("browser_type");
+	
+	public static final boolean IS_EACH_STEP_SCREENSHOT=Boolean.valueOf(properties.getProperty("take_screenshot_on_each_step"));
 	
 
 	private static Properties getProperties () {

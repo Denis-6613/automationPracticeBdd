@@ -18,7 +18,11 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static org.junit.Assert.*;
-
+/**
+ * 
+ * @author Denis
+ *
+ */
 public final class DriverHelper {
     
     private String mainWindowhandle;
@@ -76,6 +80,10 @@ public final class DriverHelper {
     
     public void clickByXpath(String xpath, int timeOutInSeconds) {
         getElement(By.xpath(xpath), timeOutInSeconds).click();
+    }
+    
+    public void clickByLinkText ( String linkText, int timeOutInSeconds ) {
+        click(By.linkText(linkText), timeOutInSeconds);
     }
     
     public void sendKeys ( By by, String text, int timeOutInSeconds ) {
@@ -136,7 +144,8 @@ public final class DriverHelper {
         driver.switchTo().window(mainWindowhandle);
     }
     
-    private void executeJS ( String script, WebElement webElement ) {
+//    private void executeJS ( String script, WebElement webElement ) {
+      public void executeJS ( String script, WebElement webElement ) {	//test of public - working
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript(script, webElement);
     }

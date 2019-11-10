@@ -47,7 +47,11 @@ public class TestDataGenerator {
 	public static int getRandomInt(int min, int max) {
 		return (int) (Math.random() * ((max - min) + 1)) + min;
 	}
-	
+	/**
+	 * 
+	 * @param numberOfCharacters
+	 * @return String of random Latin words
+	 */
 	public static String getRandomText (int numberOfCharacters) {
 		if (numberOfCharacters<1) {
 			Common.failTest("Number of characters cannot be < 1");

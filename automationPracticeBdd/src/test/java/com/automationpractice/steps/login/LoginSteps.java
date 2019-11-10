@@ -1,19 +1,17 @@
 package com.automationpractice.steps.login;
 
-import org.junit.Assert;
-import org.openqa.selenium.By;
+import static org.junit.Assert.*;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.Sleeper;
 
 import com.automationpractice.pages.home.HomePage;
 import com.automationpractice.pages.login.LoginPage;
 import com.automationpractice.pages.my_account.MyAccountPage;
-import com.automationpractice.utilities.AppProperties;
-import com.automationpractice.utilities.Common;
 import com.automationpractice.utilities.CommonStep;
-import com.automationpractice.utilities.TestDataGenerator;
 
-import cucumber.api.java.en.*;
+import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+ 
 
 //import static org.junit.Assert;
 
@@ -29,11 +27,8 @@ public class LoginSteps extends CommonStep {
 	
 	@Given("^User navigates to home page$")
 	public void userNavigatesToHomePage() {
-//		String s=TestDataGenerator.getRandomText(800);
-//		System.out.println(s);
-//		System.out.println(s.length());
+//		all done in @Before in Hooks
 	}
-	
 
 	@When("User input email address and password")
 	public void user_input_email_address_and_password() {
@@ -41,7 +36,6 @@ public class LoginSteps extends CommonStep {
 		String password="abc1234";
 		loginPage.enterEmail(email);
 		loginPage.enterPassword(password);
-		
 	}
 
 	@When("User clicks on sign in button")
@@ -53,13 +47,22 @@ public class LoginSteps extends CommonStep {
 	public void user_is_on_account_page() {
 //		Common.sleep(2);
 		String actualHeader = myAccountPage.getHeader();
-        Assert.assertEquals("MY ACCOUNT", actualHeader);
+        assertEquals("MY ACCOUNT", actualHeader);
 	}
 	
-	@Then("New feature validation")
-	public void new_feature_validation() {
-		
-		System.out.println("I am in New feature validation");
+//	for negative
+	
+	@When("User input {string} email and {string} password")
+	public void user_input_and(String email, String password) {
+		loginPage.enterEmail(email);
+	    loginPage.enterPassword(password);
 	}
+
+	@Then("User should see error message {string}")
+	public void user_should_see_error_message(String errorMessage) {
+		String actualMessage=loginPage.getErrorMessage();
+		assertTrue("Error message", actualMessage.contains(errorMessage));
+	}
+
 
 }

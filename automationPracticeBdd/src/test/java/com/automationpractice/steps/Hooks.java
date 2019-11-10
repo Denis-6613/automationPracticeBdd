@@ -3,12 +3,16 @@ package com.automationpractice.steps;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 
 import com.automationpractice.utilities.AppProperties;
 import com.automationpractice.utilities.CommonStep;
 
+import cucumber.api.Scenario;
 import cucumber.api.java.After;
+import cucumber.api.java.AfterStep;
 import cucumber.api.java.Before;
 
 public class Hooks extends CommonStep{
@@ -27,8 +31,21 @@ public class Hooks extends CommonStep{
 	}
 	
 	@After
-	public void tearDown() {
+	public void tearDown(Scenario scenario) {
+		if (scenario.isFailed()) {
+			TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+			byte[] screenshot=takesScreenshot.getScreenshotAs(OutputType.BYTES);
+			scenario.embed(screenshot, "image/png");
+		}
 		closeDriver();
+	}
+	@AfterStep
+	public void afterStep(Scenario scenario) {
+		if (AppProperties.IS_EACH_STEP_SCREENSHOT)  {
+			TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+			byte[] screenshot=takesScreenshot.getScreenshotAs(OutputType.BYTES);
+			scenario.embed(screenshot, "image/png");
+		}
 	}
 
 }

@@ -6,3 +6,4 @@ Scenario: User should able to contact customer service
 	When User populates Contact Us form
 	And User clicks on Send button
 	Then User should view success message 
+	
