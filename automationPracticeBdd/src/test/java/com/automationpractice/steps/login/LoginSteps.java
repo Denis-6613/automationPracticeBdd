@@ -1,6 +1,10 @@
 package com.automationpractice.steps.login;
 
 import static org.junit.Assert.*;
+
+import java.util.List;
+import java.util.Map;
+
 import org.openqa.selenium.WebDriver;
 
 import com.automationpractice.pages.home.HomePage;
@@ -11,6 +15,7 @@ import com.automationpractice.utilities.CommonStep;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import io.cucumber.datatable.DataTable;
  
 
 //import static org.junit.Assert;
@@ -62,6 +67,19 @@ public class LoginSteps extends CommonStep {
 	public void user_should_see_error_message(String errorMessage) {
 		String actualMessage=loginPage.getErrorMessage();
 		assertTrue("Error message", actualMessage.contains(errorMessage));
+	}
+	
+	@When("User input email, password and clicks on sign in button and validate error message")
+	public void user_input_email_password_and_clicks_on_sign_in_button_and_validate_error_message(DataTable dataTable) {
+		List<Map<String, String>> listOfRows = dataTable.asMaps(String.class, String.class);
+		
+		for ( int row = 0; row < listOfRows.size(); row++ ) {
+			String email = listOfRows.get(row).get("email");
+		
+			user_input_and(email, listOfRows.get(row).get("password"));
+			user_clicks_on_sign_in_button();
+			user_should_see_error_message(listOfRows.get(row).get("Error message"));
+		}
 	}
 
 

@@ -73,7 +73,6 @@ public final class DriverHelper {
         //.get(index) return an object of WebElement
         getElements(by, timeOutInSeconds).get(index - 1).click();
     }
-    
     public void clickById ( String id, int timeOutInSeconds ) {
         getElement(By.id(id), timeOutInSeconds).click();
     }
@@ -87,7 +86,9 @@ public final class DriverHelper {
     }
     
     public void sendKeys ( By by, String text, int timeOutInSeconds ) {
-        getElement(by, timeOutInSeconds).sendKeys(text);
+        WebElement textBox = getElement(by, timeOutInSeconds);
+        textBox.clear();
+    	textBox.sendKeys(text);
     }
     
     public String getText ( By by, int timeOutInSeconds ) {

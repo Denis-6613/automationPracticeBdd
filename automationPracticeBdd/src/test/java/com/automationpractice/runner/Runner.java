@@ -1,6 +1,9 @@
 package com.automationpractice.runner;
 
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
+
+import com.automationpractice.utilities.CommonStep;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
@@ -9,17 +12,18 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
 		plugin = {
 			"html:target/cucumber_report",
-			"json:target/cucumber_report/cucumber.json",
-			"rerun:target/failed_scenarios/rerun.txt"
+//			"json:target/cucumber_report/cucumber.json",
+//			"rerun:target/failed_scenarios/rerun.txt"
 		},
 //		features = {"src/test/resources/features/login.feature","/src/test/resources/features/contact_us.feature"},
 		features = {"src/test/resources/features"},
 		glue= {"com.automationpractice.steps"},
 //		tags= {"@smokeTest", "~@contactUs"},//tilde to skip
 //		tags= {	"@smokeTest"},
+		tags= {	"@wip"},
+//		tags= {	"@Login_outline", "@wip"},
 //		tags= {	"@contactUs"},
-//		tags= {	"@contactUs"},
-		tags= {	"@negative"},
+//		tags= {	"@negative"},
 		monochrome=true
 //				,dryRun = true
 		/*
@@ -27,4 +31,10 @@ import cucumber.api.junit.Cucumber;
 		 * for unimplemented steps in feature file
 		 */
 		)
-public class Runner {}
+public class Runner extends CommonStep{
+	
+	@AfterClass
+	public static void after() {
+		closeDriver();
+	}
+}

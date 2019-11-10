@@ -8,7 +8,7 @@ public class CommonStep {
 		return DriverFactory.getDriver();
 	}
 	
-	public void closeDriver() {
+	public static void closeDriver() {
 		DriverFactory.closeDriver();
 	}
 
