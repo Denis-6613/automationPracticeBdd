@@ -2,16 +2,11 @@ package com.automationpractice.pages.contact_us;
 
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
-import com.automationpractice.pages.home.HomePage;
-import com.automationpractice.utilities.Common;
 import com.automationpractice.utilities.CommonPage;
 import com.automationpractice.utilities.DriverHelper;
-import com.automationpractice.utilities.TestDataGenerator;
 
 /**
  * @author Denis

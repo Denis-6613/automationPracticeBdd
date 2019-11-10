@@ -1,17 +1,12 @@
 package com.automationpractice.steps.contact_us;
 
 import static org.junit.Assert.*;
-import org.openqa.selenium.WebDriver;
 
 import com.automationpractice.pages.contact_us.ContactUsPage;
-import com.automationpractice.pages.home.HomePage;
-import com.automationpractice.utilities.Common;
 import com.automationpractice.utilities.CommonStep;
-import com.automationpractice.utilities.DriverHelper;
 import com.automationpractice.utilities.TestDataGenerator;
 
 import cucumber.api.java.en.And;
-import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 /**
@@ -21,9 +16,6 @@ import cucumber.api.java.en.When;
  */
 public class ContactUsSteps extends CommonStep{
 	
-	private WebDriver driver = getDriver();
-	private static final int timeOutInSeconds = 15;
-	private HomePage homePage = new HomePage(driver);
 	
 	private ContactUsPage contactUsPage;
 	public ContactUsSteps() { 

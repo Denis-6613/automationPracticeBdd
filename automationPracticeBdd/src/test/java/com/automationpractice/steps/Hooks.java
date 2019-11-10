@@ -2,7 +2,6 @@ package com.automationpractice.steps;
 
 import java.util.concurrent.TimeUnit;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -17,7 +16,6 @@ import cucumber.api.java.Before;
 
 public class Hooks extends CommonStep{
 	
-	private static final Logger logger = Logger.getLogger(Hooks.class);
 	private WebDriver driver = getDriver();
 	
 	@Before

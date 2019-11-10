@@ -1,9 +1,7 @@
 package com.automationpractice.steps.home;
 
-import org.openqa.selenium.WebDriver;
 
 import com.automationpractice.pages.home.HomePage;
-import com.automationpractice.utilities.Common;
 import com.automationpractice.utilities.CommonStep;
 
 import cucumber.api.java.en.Given;
@@ -11,7 +9,6 @@ import cucumber.api.java.en.When;
 
 public class HomeStep extends CommonStep{
 	
-	private static final int timeOutInSeconds = 15;
 	private HomePage homePage = new HomePage(getDriver());
 	
 	@Given("^User clicks on Contact Us link$")

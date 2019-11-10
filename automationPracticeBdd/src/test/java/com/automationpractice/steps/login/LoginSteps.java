@@ -7,7 +7,6 @@ import java.util.Map;
 
 import org.openqa.selenium.WebDriver;
 
-import com.automationpractice.pages.home.HomePage;
 import com.automationpractice.pages.login.LoginPage;
 import com.automationpractice.pages.my_account.MyAccountPage;
 import com.automationpractice.utilities.CommonStep;
@@ -23,8 +22,6 @@ import io.cucumber.datatable.DataTable;
 public class LoginSteps extends CommonStep {
 	
 	private WebDriver driver = getDriver();
-	private static final int timeOutInSeconds = 15;
-	private HomePage homePage = new HomePage(driver);
 	private LoginPage loginPage = new LoginPage(driver);
 	private MyAccountPage myAccountPage = new MyAccountPage(driver);
 	

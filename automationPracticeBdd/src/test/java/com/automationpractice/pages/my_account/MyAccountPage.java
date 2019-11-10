@@ -1,10 +1,8 @@
 package com.automationpractice.pages.my_account;
 
-import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import com.automationpractice.pages.login.LoginPage;
 import com.automationpractice.utilities.CommonPage;
 import com.automationpractice.utilities.DriverHelper;
 
@@ -18,7 +16,6 @@ import com.automationpractice.utilities.DriverHelper;
 public class MyAccountPage extends CommonPage{
 	
 	private static final int timeOutInSeconds = 15;
-	private static final Logger logger = Logger.getLogger(MyAccountPage.class);
 	private DriverHelper driverHelper = getDriverHelper();
 	
 	private By header = By.tagName("h1");
