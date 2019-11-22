@@ -1,6 +1,6 @@
 package com.automationpractice.steps.contact_us;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import com.automationpractice.pages.contact_us.ContactUsPage;
 import com.automationpractice.utilities.CommonStep;

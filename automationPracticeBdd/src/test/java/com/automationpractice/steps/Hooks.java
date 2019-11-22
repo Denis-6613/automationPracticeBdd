@@ -26,7 +26,7 @@ public class Hooks extends CommonStep{
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
 //		commented for warm_up task
-		driver.get(AppProperties.AUTOMATION_PRACTICE_BASE_URL); 
+//		driver.get(AppProperties.AUTOMATION_PRACTICE_BASE_URL); 
 	}
 	
 	@After
@@ -36,6 +36,7 @@ public class Hooks extends CommonStep{
 			byte[] screenshot=takesScreenshot.getScreenshotAs(OutputType.BYTES);
 			scenario.embed(screenshot, "image/png");
 		}
+		validateAll();
 //		closeDriver();
 	}
 	@AfterStep

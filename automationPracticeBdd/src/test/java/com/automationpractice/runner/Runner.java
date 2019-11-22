@@ -20,7 +20,8 @@ import cucumber.api.junit.Cucumber;
 		glue= {"com.automationpractice.steps"},
 //		tags= {"@smokeTest", "~@contactUs"},//tilde to skip
 //		tags= {	"@smokeTest"},
-		tags= {	"@wip"},
+		tags= {	"@login_background"},
+//		tags= {	"@wip"},
 //		tags= {	"@Login_outline", "@wip"},
 //		tags= {	"@contactUs"},
 //		tags= {	"@negative"},

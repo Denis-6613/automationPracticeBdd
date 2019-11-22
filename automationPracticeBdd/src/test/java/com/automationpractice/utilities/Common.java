@@ -1,8 +1,13 @@
 package com.automationpractice.utilities;
 
 import java.io.File;
+import java.io.IOException;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 
 
 /**
@@ -15,6 +20,9 @@ import org.apache.log4j.Logger;
 public final class Common {
 
 	private static Logger logger = Logger.getLogger(Common.class);
+	
+	public static final String USER_HOME_DIR=System.getProperty("user.home");
+	public static final String USER_HOME=System.getProperty("user.dir");
 	
 	private Common() {}
 	
@@ -44,6 +52,28 @@ public final class Common {
 		}
 		
 	}
+	
+	public static String takeScreenshotForReporting (WebDriver driver) {
+        long ms =System.currentTimeMillis();
+        String path = System.getProperty("user.dir")  + "/target/screenshots"
+                + "/Screenshot" + ms;
+        
+        TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+        // getScreenshotAs method to create image file
+        File file = takesScreenshot.getScreenshotAs(OutputType.FILE);
+        try {
+            //Move image file to new destination
+            //Copy file at destination
+            FileUtils.copyFile(file, new File(path + ".png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        return path+".png";
+    }
+	
+	
+	
 	public static void failTest(String errorMessage){
 		
 		throw new RuntimeException(errorMessage);
