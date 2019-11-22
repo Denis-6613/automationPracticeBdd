@@ -79,27 +79,53 @@ final class ExcelGeneratorPage extends CommonPage {
 			WebElement rowElement = rowElements.get(index);
 			WebElement deleteIcon = rowElement.findElement(By.cssSelector(".column-remove"));
 			deleteIcon.click();
-			
+
 		}
 //		Common.sleep(2);
 
 	}
-	
-	void enterFieldName (int row, String fieldName) {
-		boolean isRow = isRow(row+1);
-		
-		if (!isRow) clickAddAnotherFieldButton();
-		
-		driverHelper.sendKeys(By.id("schema_columns_attributes_"+row+"_name"), fieldName, timeOutInSeconds);
+
+	void enterFieldName(int row, String fieldName) {
+		boolean isRow = isRow(row + 1);
+
+		if (!isRow)
+			clickAddAnotherFieldButton();
+
+//		driverHelper.sendKeys(By.id("schema_columns_attributes_"+row+"_name"), fieldName, timeOutInSeconds);
+		driverHelper.sendKeys(By.cssSelector("[placeholder='enter name...']"), (row + 1), fieldName, timeOutInSeconds);
+
 	}
 
+	void chooseType(int row, String type) {
+		driverHelper.click(By.cssSelector("[placeholder='choose type...']"), (row + 1), timeOutInSeconds);
+		driverHelper.sendKeys(By.id("type_search_field"), type, timeOutInSeconds);
+//		driverHelper.click(By.cssSelector(".examples"), timeOutInSeconds);
+		driverHelper.click
+		(By.xpath("//div[@class='type-name'][contains(text(),'" + type + "')]"),
+				timeOutInSeconds);
+		driverHelper.waitForElementInvisibility(By.cssSelector(".modal-backdrop"), timeOutInSeconds);
+
+	}
+	
+	void addRows (int row) {
+		driverHelper.sendKeys(By.id("num_rows"), String.valueOf(row), timeOutInSeconds);
+	}
+	
+	void selectFileFormat (String format) {
+		driverHelper.selectDropdownValue(By.id("schema_file_format"), format, timeOutInSeconds);
+	}
+
+	void clickDownloadButton() {
+		driverHelper.click(By.id("download"), timeOutInSeconds);
+		
+	}
+	
 	void clickAddAnotherFieldButton() {
 		driverHelper.click(By.cssSelector(".add-column-btn"), timeOutInSeconds);
 	}
-	
-	
+
 	private boolean isRow(int row) {
-		boolean isRow=false;
+		boolean isRow = false;
 		try {
 			isRow = driverHelper.getElement(By.cssSelector("#fields .fields"), row, timeOutInSeconds).isDisplayed();
 		} catch (Exception e) {

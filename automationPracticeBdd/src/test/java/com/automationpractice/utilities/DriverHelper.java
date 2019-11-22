@@ -1,4 +1,11 @@
 package com.automationpractice.utilities;
+/**
+ * 
+ * @author Denis
+ *
+ */
+
+import static org.junit.Assert.assertEquals;
 
 import java.io.File;
 import java.io.IOException;
@@ -15,14 +22,11 @@ import org.openqa.selenium.WebDriverException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import static org.junit.Assert.*;
-/**
- * 
- * @author Denis
- *
- */
+//import static org.junit.Assert.*;
+
 public final class DriverHelper {
     
     private String mainWindowhandle;
@@ -48,6 +52,11 @@ public final class DriverHelper {
         until(ExpectedConditions.visibilityOfElementLocated(by));
     }
     
+    public void waitForElementInvisibility ( By by, int timeOutInSeconds ) {
+        new WebDriverWait(driver, timeOutInSeconds).
+        until(ExpectedConditions.invisibilityOfElementLocated(by));
+    }
+    
     public WebElement getElement ( By by, int timeOutInSeconds ) {
         waitForElementVisibility(by, timeOutInSeconds);
         return driver.findElement(by);
@@ -64,7 +73,16 @@ public final class DriverHelper {
     }
     
     public void click ( By by, int timeOutInSeconds ) {
-        getElement(by, timeOutInSeconds).click();
+//        getElement(by, timeOutInSeconds).click();
+        WebElement webElement=getElement(by, timeOutInSeconds);
+        try {
+        	webElement.click();
+        } catch ( WebDriverException e ) {
+        	scrollToElement(webElement.getLocation().getX(), webElement.getLocation().getY() - 200);
+        	webElement.click();
+        }
+        
+        
 //        Reporter.step.info("Clicked on element");
     }
     
@@ -87,9 +105,24 @@ public final class DriverHelper {
     
     public void sendKeys ( By by, String text, int timeOutInSeconds ) {
         WebElement textBox = getElement(by, timeOutInSeconds);
+        scrollToElement(textBox.getLocation().getX(), textBox.getLocation().getY()-200);
         textBox.clear();
     	textBox.sendKeys(text);
     }
+    
+    public void sendKeys ( By by, int index, String text, int timeOutInSeconds ) {
+        WebElement textBox = getElement(by, index, timeOutInSeconds);
+        scrollToElement(textBox.getLocation().getX(), textBox.getLocation().getY()-200);
+        textBox.clear();
+    	textBox.sendKeys(text);
+    }
+    
+    public void selectDropdownValue(By by, String text, int timeOutInSeconds) { 
+    	Select select = new Select(getElement(by, timeOutInSeconds));
+//    	select.selectByValue(text);
+    	select.selectByVisibleText(text);
+    }
+    
     
     public String getText ( By by, int timeOutInSeconds ) {
         return getElement(by, timeOutInSeconds).getText().replaceAll("\\s+", " ").trim();

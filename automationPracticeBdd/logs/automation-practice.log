@@ -1,2 +1,2 @@
-2019-11-19 22:53:48 INFO  DriverFactory - main : 49 - Driver type set to chrome
-2019-11-19 22:53:54 ERROR ExcelGeneratorPage - main : 102 - Index: 6, Size: 6
+2019-11-21 22:43:32 INFO  DriverFactory - main : 49 - Driver type set to chrome
+2019-11-21 22:43:43 INFO  Common - main : 32 - sleep for 1 seconds
